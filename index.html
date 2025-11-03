@@ -125,7 +125,7 @@
       </div>
     </section>
 
-    <section class="reservation" id="contact">
+    <!-- <section class="reservation" id="contact">
       <div class="section__container reservation__container">
         <h3>RESERVATION</h3>
         <h2 class="section__header">BOOK YOUR TABLE</h2>
@@ -148,7 +148,77 @@
         alt="reservation"
         class="reservation__bg-2"
       />
-    </section>
+    </section> -->
+
+    <section class="reservation" id="contact">
+  <div class="section__container reservation__container">
+    <h3>RESERVATION</h3>
+    <h2 class="section__header">BOOK YOUR TABLE</h2>
+
+    <!-- Updated Form -->
+    <form id="reservation-form">
+      <input type="text" id="name" placeholder="NAME" required />
+      <input type="email" id="email" placeholder="EMAIL" required />
+      <input type="date" id="date" placeholder="DATE" required />
+      <input type="time" id="time" placeholder="TIME" required />
+      <input type="number" id="people" placeholder="PEOPLE" min="1" required />
+      <button class="btn" type="submit">FIND TABLE</button>
+    </form>
+
+    <!-- Result Section -->
+    <div id="confirmation" style="
+        margin-top: 20px; 
+        font-weight: 600; 
+        font-size: 1.1rem; 
+        color: #ffb400;
+        text-align: center;
+      ">
+    </div>
+  </div>
+
+  <img
+    src="assets/reservation-bg-1.png"
+    alt="reservation"
+    class="reservation__bg-1"
+  />
+  <img
+    src="assets/reservation-bg-2.png"
+    alt="reservation"
+    class="reservation__bg-2"
+  />
+</section>
+
+<!-- Add this script before </body> -->
+<script>
+  const form = document.getElementById('reservation-form');
+  const confirmationDiv = document.getElementById('confirmation');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const people = document.getElementById('people').value;
+
+    // Generate random values
+    const tableNumber = Math.floor(Math.random() * 20) + 1; // 1–20
+    const estimatedTime = Math.floor(Math.random() * 16) + 15; // 15–30 mins
+
+    // Display confirmation message
+    confirmationDiv.innerHTML = `
+      🍔 Thank you, <strong>${name}</strong>!<br>
+      Your reservation for <strong>${people}</strong> people on 
+      <strong>${date}</strong> at <strong>${time}</strong> is confirmed.<br>
+      🪑 Table Number: <strong>${tableNumber}</strong><br>
+      ⏱ Estimated Food Preparation Time: <strong>${estimatedTime} minutes</strong>.
+    `;
+
+    // Reset form
+    form.reset();
+  });
+</script>
+
 
     <footer class="footer">
       <div class="section__container footer__container">
